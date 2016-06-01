@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.avaje.ebean.annotation.CreatedTimestamp;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="descriptions")
@@ -43,6 +44,7 @@ public class Description {
 	private String lang;
 	
 	@ManyToOne
+	@JsonBackReference
 	private Product product;
 	
 	

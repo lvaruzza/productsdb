@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="prices")
 @XmlAccessorType (XmlAccessType.NONE)
@@ -34,6 +36,7 @@ public class Price {
 
 	
 	@ManyToOne
+	@JsonBackReference
 	private Product product;
 	
 	public long getId() {

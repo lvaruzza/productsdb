@@ -18,10 +18,16 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name="products",uniqueConstraints={@UniqueConstraint(columnNames={"sku"})})
 @XmlRootElement( name = "product" )
 @XmlAccessorType (XmlAccessType.NONE)
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@JsonIdentityReference(alwaysAsId=false) // otherwise first ref as POJO, others as id
 public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
